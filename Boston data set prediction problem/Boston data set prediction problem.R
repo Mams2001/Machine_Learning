@@ -56,7 +56,7 @@ points(3,BIC[3], pch=8, col= 'red', cex=2)
 plot(adjR, main= 'AdjRsq', xlab='predictors', ylab='Adj Rsquared values', type = 'l', col='blue', lwd=2)
 points(6,adjR[6], pch=8, col='red', cex=2)
 
-#Taking Model with lowest Cp is the 5th model (with 5 predictors and intercept)
+#Taking the model with the lowest Cp, that is the 5th model (with 5 predictors and intercept)
 Beta_vec <- coef(bestsubsets,5) # estimated beta vector
 test.predictions <- model.matrix(crim~., data= Boston.test)[,names(Beta_vec)]%*%Beta_vec # test predictions
 
@@ -141,6 +141,6 @@ test.MSE.Boston.pcr # 50.62118
 
 # In conclusion, one observes that the model that had the highest performance
 # on the testing set is multiple linear regression using best subset selection and selecting the best model using Mallow Cp . One notices that 
-# the higher test error is given by principal component regression since here all 13 variables have been used. 
+# the higher test error is given by principal component regression although dimensionality of the inputs space has not been changed. 
 
 
